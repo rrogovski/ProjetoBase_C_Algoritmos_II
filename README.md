@@ -1,8 +1,9 @@
 # ProjetoBase_C_Algoritmos_II
-## Projeto do CodeBlocks em C
+## Projeto do CodeBlocks em C (Windows version)
 
 ### Current Features
 - C
+- Windows
 
 ### Updates
 I'm working on it.

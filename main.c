@@ -420,7 +420,7 @@ void sair()
 //Inicialização do programa
 int main()
 {
-	int opcao, status, parar, repeticaoPadrao = 100;
+	int opcao = 0, repeticaoPadrao = 100;
 	char titulo[70] = "Lista de exercícios - Rodrigo";
 	setlocale(LC_ALL, "");
 	system("mode con cols=100 lines=40");
@@ -436,19 +436,8 @@ int main()
 	WORD saved_attributes;
 	saved_attributes = csbi.wAttributes;
 
-//    SCROLLINFO ScrollInfo;
-//    ScrollInfo.cbSize = sizeof(ScrollInfo);     // size of this structure
-//    ScrollInfo.fMask = SIF_ALL;                 // parameters to set
-//    ScrollInfo.nMin = 0;                        // minimum scrolling position
-//    ScrollInfo.nMax = 100;                      // maximum scrolling position
-//    ScrollInfo.nPage = 40;                      // the page size of the scroll box
-//    ScrollInfo.nPos = 50;                       // initial position of the scroll box
-//    ScrollInfo.nTrackPos = 0;                   // immediate position of a scroll box that the user is dragging
-//    m_MyScrollBar.SetScrollInfo(&ScrollInfo);
-
 	do
 	{
-		//SetConsoleTextAttribute(hConsole, FOREGROUND_RED | FOREGROUND_GREEN | FOREGROUND_INTENSITY | BACKGROUND_BLUE);
 		SetConsoleTextAttribute(hConsole, 8 | 3| 2 | 20);
 		repeatChar('*', repeticaoPadrao);
 		printf("\n");
@@ -466,8 +455,6 @@ int main()
 		printf(" 5 - Acessar o exercício 05\n\n");
 		printf(" 0 -  Sair\n\n");
 		voltar:;
-
-		//status = scanf("%d", &opcao);
 
         if (scanf("%d", &opcao) != 1) {
             fflush(stdin);
@@ -515,7 +502,6 @@ int main()
             default:
                 printf("Digite uma opção válida\n");
                 fflush(stdin);
-                //break;
                 goto voltar;
             }
         }
