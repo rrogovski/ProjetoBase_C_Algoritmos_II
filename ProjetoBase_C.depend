@@ -1,0 +1,17 @@
+# depslib dependency file v1.0
+1551316314 source:f:\faculdade\si\iii sem\algoritmos ii\listas\projetobase_c\main.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<locale.h>
+	<math.h>
+	<Windows.h>
+	<tchar.h>
+	<conio.h>
+	<time.h>
+	<wchar.h>
+	<ctype.h>
+	<float.h>
+	<memory.h>
+	<stdbool.h>
+
