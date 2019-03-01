@@ -1,4 +1,4 @@
-# ProjetoBase_C_Algortimos_II
+# ProjetoBase_C_Algoritmos_II
 ## Projeto do CodeBlocks em C
 
 ### Current Features
