@@ -13,9 +13,11 @@
 #include <memory.h>
 #include <stdbool.h>
 
-///Acadêmicos: Rodrigo Rogovski
+/** Acadêmicos: Rodrigo Rogovski
+*/
 
-///Função para repetir strings
+/** Função para repetir strings
+*/
 void repeatChar(char input, int count)
 {
 	for (int i = 0; i != count; i++)
@@ -24,13 +26,15 @@ void repeatChar(char input, int count)
 	}
 }
 
-///função para limpar a tela
+/** Função para limpar a tela
+*/
 void limparTela()
 {
 	system("cls || clear");
 }
 
-///Função para verificar um número primo
+/** Função para verificar um número primo
+*/
 bool VerificaPrimo(int p){
     fflush(stdin);
     bool primo;
@@ -51,14 +55,16 @@ bool VerificaPrimo(int p){
     return primo;
 }
 
-///Struct Poltrona
+/** Struct Poltrona
+*/
 typedef struct{
     int numeroPoltrona;
     char tipo; //J-Janela, C-Corredor
     int situcao; //0-Livre, 1-Ocupada
 } Poltrona;
 
-///Exercício 01
+/** Exercício 01
+*/
 void ex01()
 {
 	printf("Exercicío 1)");
@@ -90,7 +96,8 @@ void ex01()
 
 }
 
-///Exercício 02
+/** Exercício 02
+*/
 void ex02()
 {
     int primos[10];
@@ -122,7 +129,8 @@ void ex02()
 	limparTela();
 }
 
-///Exercício 03
+/** Exercício 03
+*/
 void ex03()
 {
 	printf("\nFaça um programa que leia um código numérico inteiro e um vetor de cinco posições");
@@ -182,7 +190,8 @@ void ex03()
 
 }
 
-///Exercício 04
+/** Exercício 04
+*/
 void ex04()
 {
     char caracteres[20] = {'A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T'};
@@ -239,7 +248,8 @@ void ex04()
 	limparTela();
 }
 
-///Exercício 05
+/** Exercício 05
+*/
 void ex05()
 {
     Poltrona poltJanela[24];
@@ -404,7 +414,8 @@ void ex05()
 	limparTela();
 }
 
-//Sair do programa
+/** Sair do programa
+*/
 void sair()
 {
 	limparTela();
@@ -417,7 +428,8 @@ void sair()
 	}
 }
 
-//Inicialização do programa
+/** Inicialização do programa
+*/
 int main()
 {
 	int opcao = 0, repeticaoPadrao = 100;
