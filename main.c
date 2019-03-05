@@ -33,6 +33,12 @@ void limparTela()
 	system("cls || clear");
 }
 
+/** Faz a validação da entrada de uma opção do tipo char
+*/
+int validarOpcao(char opcao) {
+
+}
+
 /** Função para verificar um número primo
 */
 bool VerificaPrimo(int p){
@@ -62,6 +68,12 @@ typedef struct{
     char tipo; //J-Janela, C-Corredor
     int situcao; //0-Livre, 1-Ocupada
 } Poltrona;
+
+/** Verificar se poltrona está livre
+*/
+char verificaPoltrona(Poltrona poltrona) {
+    return poltrona.situcao == 0 ? 'S' : 'N';
+}
 
 /** Exercício 01
 */
@@ -269,67 +281,73 @@ void ex05()
         poltCorredor[i].situcao = 0;
     }
 
-    for(int i = 0; i < 24; i++){
-        printf("Poltrona -> Tipo:%c | Livre: %d | #%2d    |    Poltrona -> Tipo:%c | Livre: %d | #%2d\n",poltCorredor[i].tipo,poltCorredor[i].situcao,poltCorredor[i].numeroPoltrona,poltJanela[i].tipo,poltJanela[i].situcao,poltJanela[i].numeroPoltrona);
-    }
-
     voltar:;
 
+    printf("\n*Poltrona livre: [S-sim | N-não]:\n");
+    for(int i = 0; i < 24; i++){
+        printf("#%2d | Poltrona -> Tipo:%c | Livre: %c    |    #%2d | Poltrona -> Tipo:%c | Livre: %c \n",poltCorredor[i].numeroPoltrona,poltCorredor[i].tipo,verificaPoltrona(poltCorredor[i]),poltJanela[i].numeroPoltrona,poltJanela[i].tipo,verificaPoltrona(poltJanela[i]));
+    }
+
+    printf("\nRealizar venda de passagem? [S-sim | N-não]:");
+    voltarVenda:;
     fflush(stdin);
-    printf("\n\nRealizar venda de passagem? [S-sim | N-não]:");
     opcao = getchar();
     opcao = toupper((unsigned char) opcao);
+
+    if(opcao!= 'S' && opcao!= 'N') {
+        printf("\nOpção inválida! informe outra opção:");
+        goto voltarVenda;
+    }
 
     menu:;
 
     if(opcao == 'S'){
         printf("\n\nQual o tipo de poltrona? [J-Janela | C-Corredor]:");
+        voltarTipoPoltrona:;
         fflush(stdin);
         scanf("%c",&opcao);
         opcao = toupper((unsigned char) opcao);
 
+        if(opcao!= 'J' && opcao!= 'C') {
+            printf("\nOpção inválida! Informe outra opção:");
+            goto voltarTipoPoltrona;
+        }
+
         switch (opcao)
 		{
         int num;
-        int invalida = 0;
+
 		case 'J':
 			limparTela();
 			fflush(stdin);
 			printf("Poltronas livres:\n");
 			for(int i = 0; i < 24; i++){
                 if(poltJanela[i].situcao == 0){
-                    printf("    Poltrona -> Tipo:%c | Livre: %d | #%2d\n",poltJanela[i].tipo,poltJanela[i].situcao,poltJanela[i].numeroPoltrona);
+                    printf("    #%2d | Poltrona -> Tipo:%c | Livre: %c\n",poltJanela[i].numeroPoltrona,poltJanela[i].tipo,verificaPoltrona(poltJanela[i]));
                 }
 			}
 
 			printf("        Qual o número[#] da poltrona:");
+			voltarSelecaoPoltronaJanela:;
             fflush(stdin);
-            scanf("%d",&num);
 
-            for(int i = 0; i < 24; i++){
-                if(poltJanela[i].numeroPoltrona == num && poltJanela[i].situcao == 1){
-                    printf("\n      Venda não realizada. A poltrona #%d está reservada. Tente novamente!\n",num);
+            //Verifica se o número digitado não é válido ou é maior que maior que o tamanho do array ou se não é par
+            if(scanf("%d",&num) != 1 || (sizeof(poltJanela)/sizeof(poltJanela[0])) < num/2 || num % 2 != 0) {
+                printf("\n        Opção inválida! Informe outra poltrona:");
+                goto voltarSelecaoPoltronaJanela;
+            } else {
+                if(poltJanela[(num/2)-1].situcao == 1) {
+                    printf("\n        Venda não realizada. A poltrona #%d está reservada. Informe outra poltrona:",num);
+                    goto voltarSelecaoPoltronaJanela;
+                } else {
+                    poltJanela[(num/2)-1].situcao = 1;
+                    printf("\n        Venda realizada com sucesso! A poltrona #%d foi reservada.\n",num);
+                    printf("\n        Pressionar qualquer tecla para voltar à tela inicial");
+                    getch();
                     goto voltar;
                 }
-			}
+            }
 
-			for(int i = 0; i < 24; i++){
-                if(poltJanela[i].numeroPoltrona == num){
-                    if (poltJanela[i].situcao == 0){
-                        poltJanela[i].situcao = 1;
-                        printf("\n      Venda realizada com sucesso! A poltrona #%d foi reservada.\n",num);
-                        goto voltar;
-                    }
-                }
-                else{
-                        invalida = 1;
-                }
-			}
-
-			if(invalida == 1){
-                printf("\n      Venda não realizada. A poltrona #%d não foi localizada. Tente novamente\n",num);
-                goto voltar;
-			}
 			goto voltar;
 			break;
 
@@ -339,44 +357,36 @@ void ex05()
 			printf("Poltronas livres:\n");
 			for(int i = 0; i < 24; i++){
                 if(poltCorredor[i].situcao == 0){
-                    printf("    Poltrona -> Tipo:%c | Livre: %d | #%2d\n",poltCorredor[i].tipo,poltCorredor[i].situcao,poltCorredor[i].numeroPoltrona);
+                    printf("    #%2d | Poltrona -> Tipo:%c | Livre: %c\n",poltCorredor[i].numeroPoltrona,poltCorredor[i].tipo,verificaPoltrona(poltCorredor[i]));
                 }
 			}
 
 			printf("        Qual o número[#] da poltrona:");
+			voltarSelecaoPoltronaCorredor:;
             fflush(stdin);
-            scanf("%d",&num);
 
-			for(int i = 0; i < 24; i++){
-                if(poltCorredor[i].numeroPoltrona == num && poltCorredor[i].situcao == 1){
-                    printf("\n      Venda não realizada. A poltrona #%d está reservada. Tente novamente!\n",num);
+            //Verifica se o número digitado não é válido ou é maior que maior que o tamanho do array ou se não é ímpar
+            if(scanf("%d",&num) != 1 || (sizeof(poltCorredor)/sizeof(poltCorredor[0])) < num/2 || num % 2 == 0) {
+                printf("\n        Opção inválida! Informe outra poltrona:");
+                goto voltarSelecaoPoltronaCorredor;
+            } else {
+                if(poltCorredor[(num - 1)/2].situcao == 1) {
+                    printf("\n        Venda não realizada. A poltrona #%d está reservada. Informe outra poltrona:",num);
+                    goto voltarSelecaoPoltronaCorredor;
+                } else {
+                    poltCorredor[(num - 1)/2].situcao = 1;
+                    printf("\n        Venda realizada com sucesso! A poltrona #%d foi reservada.\n",num);
+                    printf("\n        Pressionar qualquer tecla para voltar à tela inicial");
+                    getch();
                     goto voltar;
                 }
-			}
+            }
 
-			for(int i = 0; i < 24; i++){
-                if(poltCorredor[i].numeroPoltrona == num){
-                    if (poltCorredor[i].situcao == 0){
-                        poltCorredor[i].situcao = 1;
-                        printf("\n      Venda realizada com sucesso! A poltrona #%d foi reservada.\n",num);
-                        goto voltar;
-                    }
-                }
-                else{
-                        invalida = 1;
-                }
-			}
-
-			if(invalida == 1){
-                printf("\n      Venda não realizada. A poltrona #%d não foi localizada. Tente novamente\n",num);
-                goto voltar;
-			}
 			goto voltar;
 			break;
 
 		default:
 			printf("Digite uma opção válida\n");
-			//break;
 			goto menu;
 		}
     }
@@ -392,7 +402,6 @@ void ex05()
         switch (opcao)
 		{
 		case 'S':
-			goto fim;
 			break;
 
 		case 'N':
@@ -407,11 +416,39 @@ void ex05()
 
     }
 
-
-    fim:;
-    printf("\n\n");
-	system("pause");
 	limparTela();
+}
+
+
+/** Area para testes
+*/
+void teste() {
+    //printf("%d", getchar());
+//    char str[10090];
+//    int ch, n = 0;
+//
+//    while ((ch = getchar()) != EOF && n < 1000) {
+//        str[n] = ch;
+//        ++n;
+//    }
+//
+//    for (int i = 0; i < n; ++i)
+//        putchar(str[i]);
+//
+//    putchar('\n'); /* trailing '\n' needed in Standard C */
+
+    //Poltrona polt[24];
+    //printf("total array %d", sizeof(polt)/sizeof(polt[0]));
+    //printf("total array %d", countArray(polt));
+    #if defined(__linux__) || defined(__unix__) || defined(__APPLE__)
+        system("clear");
+        printf("Unix-like\n");
+    #endif
+
+    #if defined(_WIN32) || defined(_WIN64)
+        system("cls");
+        printf("Win\n");
+    #endif
 }
 
 /** Sair do programa
@@ -434,32 +471,40 @@ int main()
 {
 	int opcao = 0, repeticaoPadrao = 100;
 	char titulo[70] = "Lista de exercícios - Rodrigo";
+	//http://linguagemc.com.br/localizacao-de-programas-com-locale-h/
 	setlocale(LC_ALL, "");
 	system("mode con cols=100 lines=40");
 
+	#if defined(_WIN32) || defined(_WIN64)
+        CONSOLE_SCREEN_BUFFER_INFO csbi;
+        int columns, rows;
+        GetConsoleScreenBufferInfo(GetStdHandle(STD_OUTPUT_HANDLE), &csbi);
+        columns = csbi.srWindow.Right - csbi.srWindow.Left + 1;
+        rows = csbi.srWindow.Bottom - csbi.srWindow.Top + 1;
 
-	CONSOLE_SCREEN_BUFFER_INFO csbi;
-	int columns, rows;
-	GetConsoleScreenBufferInfo(GetStdHandle(STD_OUTPUT_HANDLE), &csbi);
-	columns = csbi.srWindow.Right - csbi.srWindow.Left + 1;
-	rows = csbi.srWindow.Bottom - csbi.srWindow.Top + 1;
-
-	HANDLE hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
-	WORD saved_attributes;
-	saved_attributes = csbi.wAttributes;
+        HANDLE hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
+        WORD saved_attributes;
+        saved_attributes = csbi.wAttributes;
+    #endif
 
 	do
 	{
-		SetConsoleTextAttribute(hConsole, 8 | 3| 2 | 20);
+	    #if defined(_WIN32) || defined(_WIN64)
+            SetConsoleTextAttribute(hConsole, 8 | 3| 2 | 20);
+		#endif
 		repeatChar('*', repeticaoPadrao);
 		printf("\n");
 		repeatChar('*', (repeticaoPadrao - strlen(titulo)) / 2); printf(titulo); repeatChar('*', (repeticaoPadrao - strlen(titulo)) / 2);
 		printf("\n");
 		repeatChar('*', repeticaoPadrao);
 		printf("\n\n");
-		SetConsoleTextAttribute(hConsole, FOREGROUND_GREEN);
+		#if defined(_WIN32) || defined(_WIN64)
+            SetConsoleTextAttribute(hConsole, FOREGROUND_GREEN);
+		#endif
 		printf("Digite o número do exercício para acessar o programa referente ao mesmo:\n\n");
-		SetConsoleTextAttribute(hConsole, saved_attributes);
+		#if defined(_WIN32) || defined(_WIN64)
+            SetConsoleTextAttribute(hConsole, saved_attributes);
+		#endif
 		printf(" 1 - Acessar o exercício 01\n\n");
 		printf(" 2 - Acessar o exercício 02\n\n");
 		printf(" 3 - Acessar o exercício 03\n\n");
@@ -509,6 +554,12 @@ int main()
                 limparTela();
                 fflush(stdin);
                 sair();
+                break;
+
+            case 999:
+                limparTela();
+                fflush(stdin);
+                teste();
                 break;
 
             default:

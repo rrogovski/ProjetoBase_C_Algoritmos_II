@@ -1,16 +1,18 @@
 # ProjetoBase_C_Algoritmos_II
-## Projeto do CodeBlocks em C (Windows version)
+## Projeto do CodeBlocks em C
+
+### Usage
+1) Clone the repo.
+2) Open it with [codeblocks](http://www.codeblocks.org/)(use the option "Open an existing project" and navigate to "ProjetoBase_C.cbp" file in the root directory)
+3) You're good to code.
 
 ### Current Features
 - C
 - Windows
+- Linux
 
 ### Updates
 I'm working on it.
-
-### Installation
-1) Clone the repo.
-2) You're good to go.
 
 ### FAQ
 **Q1) ?**
@@ -26,6 +28,4 @@ A2)
 A3) 
 
 ### Credits
-Coming soon:
-
-- [codeblocks](http://www.codeblocks.org/)
+Coming soon
