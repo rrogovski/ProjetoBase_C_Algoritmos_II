@@ -15,7 +15,7 @@
 	<memory.h>
 	<stdbool.h>
 
-1551745244 source:f:\faculdade\si\iii sem\algoritmos ii\listas\projetobase_c_algoritmos_ii\main.c
+1553213846 source:f:\faculdade\si\iii sem\algoritmos ii\listas\projetobase_c_algoritmos_ii\main.c
 	<stdio.h>
 	<stdlib.h>
 	<string.h>
@@ -30,4 +30,77 @@
 	<float.h>
 	<memory.h>
 	<stdbool.h>
+
+1566347880 source:e:\faculdade\si\iii sem\algoritmos ii\listas\projetobase_c_algoritmos_ii\main.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<locale.h>
+	<math.h>
+	<Windows.h>
+	<tchar.h>
+	<conio.h>
+	<time.h>
+	<wchar.h>
+	<ctype.h>
+	<float.h>
+	<memory.h>
+	<stdbool.h>
+	"helper.h"
+	"ex01.h"
+	"ex02.h"
+
+1566350822 e:\faculdade\si\iii sem\algoritmos ii\listas\projetobase_c_algoritmos_ii\helper.h
+	<stdio.h>
+	<math.h>
+	<stdbool.h>
+
+1566350832 source:e:\faculdade\si\iii sem\algoritmos ii\listas\projetobase_c_algoritmos_ii\helper.c
+	"helper.h"
+
+1566346946 e:\faculdade\si\iii sem\algoritmos ii\listas\projetobase_c_algoritmos_ii\ex01.h
+
+1566346730 source:e:\faculdade\si\iii sem\algoritmos ii\listas\projetobase_c_algoritmos_ii\ex01.c
+	<stdio.h>
+	"ex01.h"
+
+1566347162 source:e:\faculdade\si\iii sem\algoritmos ii\listas\projetobase_c_algoritmos_ii\ex02.c
+	<stdio.h>
+	"ex02.h"
+
+1566347114 e:\faculdade\si\iii sem\algoritmos ii\listas\projetobase_c_algoritmos_ii\ex02.h
+
+1566347318 source:e:\faculdade\si\iii sem\algoritmos ii\listas\projetobase_c_algoritmos_ii\ex03.c
+	<stdio.h>
+	"ex03.h"
+
+1566347292 e:\faculdade\si\iii sem\algoritmos ii\listas\projetobase_c_algoritmos_ii\ex03.h
+
+1566347542 source:e:\faculdade\si\iii sem\algoritmos ii\listas\projetobase_c_algoritmos_ii\ex04.c
+	<stdio.h>
+	"ex04.h"
+
+1566347508 e:\faculdade\si\iii sem\algoritmos ii\listas\projetobase_c_algoritmos_ii\ex04.h
+
+1566351424 source:e:\faculdade\si\iii sem\algoritmos ii\listas\projetobase_c_algoritmos_ii\ex05.c
+	<stdio.h>
+	"ex05.h"
+
+1566351988 e:\faculdade\si\iii sem\algoritmos ii\listas\projetobase_c_algoritmos_ii\ex05.h
+
+1566352714 source:e:\faculdade\si\iii sem\algoritmos ii\listas\projetobase_c_algoritmos_ii\ex06.c
+	<stdio.h>
+
+1566393228 source:e:\faculdade\si\iii sem\algoritmos ii\listas\projetobase_c_algoritmos_ii\test.c
+	<stdio.h>
+	"test.h"
+
+1566393158 e:\faculdade\si\iii sem\algoritmos ii\listas\projetobase_c_algoritmos_ii\test.h
+
+1566398456 source:e:\faculdade\si\iii sem\algoritmos ii\listas\projetobase_c_algoritmos_ii\window.c
+	<Windows.h>
+	<locale.h>
+	"window.h"
+
+1566398206 e:\faculdade\si\iii sem\algoritmos ii\listas\projetobase_c_algoritmos_ii\window.h
 

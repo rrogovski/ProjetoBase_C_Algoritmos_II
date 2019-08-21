@@ -33,9 +33,45 @@
 		<Compiler>
 			<Add option="-Wall" />
 		</Compiler>
+		<Unit filename="ex01.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="ex01.h" />
+		<Unit filename="ex02.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="ex02.h" />
+		<Unit filename="ex03.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="ex03.h" />
+		<Unit filename="ex04.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="ex04.h" />
+		<Unit filename="ex05.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="ex05.h" />
+		<Unit filename="ex06.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="ex06.h" />
+		<Unit filename="helper.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="helper.h" />
 		<Unit filename="main.c">
 			<Option compilerVar="CC" />
 		</Unit>
+		<Unit filename="test.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="test.h" />
+		<Unit filename="window.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="window.h" />
 		<Extensions>
 			<code_completion />
 			<envvars />
